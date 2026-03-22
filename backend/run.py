@@ -31,6 +31,10 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
 
+    # Ensure we are in the backend directory
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    sys.path.append(os.getcwd())
+
     # Ensure .env is loaded
     if not os.path.exists(".env"):
         print("⚠️  Warning: .env file not found. Copying from .env.example...")
